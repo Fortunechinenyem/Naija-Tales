@@ -39,22 +39,67 @@ const stories = [
     id: 6,
     title: "The Brave Hunter",
     language: "Yoruba",
-
     image: "/images/hunter.jpg",
   },
   {
     id: 7,
-    title: "The Clever Hare",
+    title: "The Clever Rabbit",
     language: "Pidgin",
-
-    image: "/images/hare.jpg",
+    image: "/images/rabbit.jpg",
   },
   {
     id: 8,
     title: "The Talking Drum",
     language: "Igbo",
-
     image: "/images/drum2.jpg",
+  },
+  {
+    id: 9,
+    title: "The Tree of Life",
+    language: "Igbo",
+    image: "/images/tree.jpg",
+  },
+  {
+    id: 10,
+    title: "The Eagle and the Chick",
+    language: "Yoruba",
+    image: "/images/eagle.jpg",
+  },
+  {
+    id: 11,
+    title: "The Hunter and the Enchanted Deer",
+    language: "Hausa",
+    image: "/images/deer.jpg",
+  },
+  {
+    id: 12,
+    title: "The Fox and the Drum",
+    language: "Pidgin",
+    image: "/images/fox.jpg",
+  },
+  {
+    id: 13,
+    title: "The River Spirit’s Gift",
+    language: "Efik",
+    image: "/images/river.jpg",
+  },
+  {
+    id: 14,
+    title: "The Talking Skull",
+    language: "Igbo",
+    image: "/images/skull.jpg",
+  },
+  {
+    id: 15,
+    title: "The Woman Who Refused to Share",
+    language: "Tiv",
+    image: "/images/woman.jpg",
+  },
+  {
+    id: 16,
+    title: "How the Sun and Moon Came to Be",
+    language: "Yoruba",
+    image: "/images/sunmoon.jpg",
   },
 ];
 
