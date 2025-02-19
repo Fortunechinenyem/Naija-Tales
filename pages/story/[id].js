@@ -4,6 +4,7 @@ import { Howl } from "howler";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import stories from "@/app/components/Stories";
+import Link from "next/link";
 
 const StoryPage = () => {
   const router = useRouter();
@@ -45,12 +46,11 @@ const StoryPage = () => {
 
   return (
     <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
-      {/* Language Selection Dropdown */}
-      <div className="flex justify-end mb-4">
+      <div className=" mb-9 flex flex-wrap justify-between items-center mb-4 gap-2">
         <select
           onChange={handleLanguageChange}
           value={lang || "English"}
-          className="bg-white text-black px-4 py-2 rounded-md shadow-md"
+          className="bg-white text-black px-4 py-2 rounded-md shadow-md w-full sm:w-auto"
         >
           {availableLanguages.map((language) => (
             <option key={language} value={language}>
@@ -58,6 +58,13 @@ const StoryPage = () => {
             </option>
           ))}
         </select>
+
+        <Link
+          href="/stories"
+          className="bg-white text-purple-600 font-bold px-4 py-2 rounded-md shadow-md hover:bg-purple-100 transition w-full sm:w-auto text-center"
+        >
+          Back
+        </Link>
       </div>
 
       <motion.h1
