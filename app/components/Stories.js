@@ -307,7 +307,7 @@ const stories = [
     title: "How the Sun and Moon Came to Be",
     language: "Yoruba",
     audio: "/audio/sunmoon.mp3",
-    text: "Long ago, the sun and moon lived on Earth...",
+    text: "Long ago, the sun and moon lived on Earth and...",
     image: "/images/sunmoon.jpg",
     choices: [],
   },
