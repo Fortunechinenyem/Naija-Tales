@@ -53,13 +53,13 @@ const stories = [
     title: "The Talking Drum",
     language: "Igbo",
 
-    image: "/images/drum.jpg",
+    image: "/images/drum2.jpg",
   },
 ];
 
 export default function Stories() {
   return (
-    <div className="bg-gradient-to-b from-green-500 to-yellow-300 min-h-screen p-8">
+    <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
       <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}

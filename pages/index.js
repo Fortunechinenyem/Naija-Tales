@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import QuizGame from "@/app/components/QuizGame";
+import naijaTalesQuestions from "@/app/components/NaijaTalesQuestions";
 
 const stories = [
   {
@@ -34,6 +36,24 @@ const stories = [
     language: "Hausa",
     image: "/images/calabash.jpg",
   },
+  {
+    id: 6,
+    title: "The Brave Hunter",
+    language: "Yoruba",
+    image: "/images/hunter.jpg",
+  },
+  {
+    id: 7,
+    title: "The Clever Rabbit",
+    language: "Hausa",
+    image: "/images/rabbit.jpg",
+  },
+  {
+    id: 8,
+    title: "The Talking Drum",
+    language: "Igbo",
+    image: "/images/drum2.jpg",
+  },
 ];
 
 const testimonials = [
@@ -55,10 +75,24 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [isPlaying, setIsPlaying] = useState(true);
   const [language, setLanguage] = useState("English");
 
+  const toggleMusic = () => {
+    const audio = document.querySelector("audio");
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
   return (
-    <div className="bg-gradient-to-b from-green-400 to-yellow-400 min-h-screen p-8">
+    <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
+      <audio autoPlay loop>
+        <source src="/audio/folklore.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
       <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -82,7 +116,7 @@ export default function Home() {
           transition={{ duration: 1, delay: 0.5 }}
         >
           <Link href="/stories">
-            <button className="bg-white text-green-600 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-green-100 transition-colors">
+            <button className="bg-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-colors">
               Explore Stories
             </button>
           </Link>
@@ -104,14 +138,21 @@ export default function Home() {
           </select>
         </div>
       </div>
+      <div className="text-center mb-7">
+        <button
+          onClick={toggleMusic}
+          className="mt-6 p-3 text-lg bg-pink-600 text-white rounded-lg cursor-pointer transition-transform hover:scale-105 active:scale-95 shadow-md"
+        >
+          {isPlaying ? "Pause Music" : "Play Music"}
+        </button>
+      </div>
 
-      {/* Featured Stories Section */}
       <div className="mb-16">
         <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8">
           Featured Stories
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {stories.slice(0, 3).map((story) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {stories.slice(0, 4).map((story) => (
             <Link key={story.id} href={`/story/${story.id}`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -143,15 +184,57 @@ export default function Home() {
       </div>
 
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-        <h2 className="text-3xl md:text-4xl font-bold text-green-600 text-center mb-6">
-          About Naija Tales
-        </h2>
-        <p className="text-gray-700 text-lg text-center">
-          Naija Tales is a fun and educational app that brings Nigerian
-          folktales, myths, and legends to life. With interactive stories,
-          animations, and games, children can learn about their culture while
-          having fun!
-        </p>
+        <div className="flex flex-col md:flex-row items-center">
+          <div className="md:w-1/2">
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-600 mb-6">
+              About Naija Tales
+            </h2>
+            <p className="text-gray-700 text-lg">
+              Naija Tales is a fun and educational app that brings Nigerian
+              folktales, myths, and legends to life. With interactive stories,
+              animations, and games, children can learn about their culture
+              while having fun!
+            </p>
+          </div>
+          <div className="md:w-1/2 mt-8 md:mt-0">
+            <Image
+              src="/images/folklore.jpg"
+              alt="Naija Tales Mascot"
+              width={400}
+              height={400}
+              className="rounded-2xl"
+            />
+          </div>
+        </div>
+      </div>
+      <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
+        <div className="flex flex-col md:flex-row items-center gap-8">
+          <div className="md:w-1/2 flex justify-center">
+            <Image
+              src="/images/drum2.jpg"
+              alt="Naija Tales Quiz"
+              width={400}
+              height={400}
+              className="rounded-2xl shadow-lg"
+            />
+          </div>
+
+          <div className="md:w-1/2 text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-bold text-purple-600 mb-4">
+              Quiz Game!
+            </h2>
+            <p className="text-gray-700 text-lg mb-4">
+              Naija Tales is a fun and educational app that brings Nigerian
+              folktales, myths, and legends to life. With interactive stories,
+              animations, and games, children can learn about their culture
+              while having fun!
+            </p>
+
+            <div className="mt-6">
+              <QuizGame questions={naijaTalesQuestions} />
+            </div>
+          </div>
+        </div>
       </div>
 
       <div className="mb-16">
@@ -168,7 +251,7 @@ export default function Home() {
               className="bg-white rounded-2xl shadow-xl p-6 text-center"
             >
               <p className="text-gray-700 italic mb-4">"{testimonial.quote}"</p>
-              <p className="text-green-600 font-semibold">
+              <p className="text-purple-600 font-semibold">
                 - {testimonial.name}
               </p>
             </motion.div>
@@ -188,19 +271,19 @@ export default function Home() {
         <div className="flex justify-center space-x-4">
           <Link
             href="#"
-            className="text-white hover:text-green-200 transition-colors"
+            className="text-white hover:text-orange-300 transition-colors"
           >
             Facebook
           </Link>
           <Link
             href="#"
-            className="text-white hover:text-green-200 transition-colors"
+            className="text-white hover:text-orange-300 transition-colors"
           >
             Twitter
           </Link>
           <Link
             href="#"
-            className="text-white hover:text-green-200 transition-colors"
+            className="text-white hover:text-orange-300 transition-colors"
           >
             Instagram
           </Link>

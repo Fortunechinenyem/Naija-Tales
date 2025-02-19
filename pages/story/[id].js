@@ -95,7 +95,7 @@ const stories = [
     language: "Igbo",
     audio: "/audio/talking_drum.mp3",
     text: "A young boy discovered a drum that could talk. It led him on an adventure he never expected...",
-    image: "/images/drum.jpg",
+    image: "/images/drum2.jpg",
     choices: [
       { text: "Follow the drum's voice", next: 16 },
       { text: "Ignore the drum", next: 17 },
@@ -115,7 +115,6 @@ const StoryPage = () => {
       if (fetchedStory) {
         setStory(fetchedStory);
 
-        // Play audio
         const sound = new Howl({ src: [fetchedStory.audio] });
         setAudio(sound);
         sound.play();
