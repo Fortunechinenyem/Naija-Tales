@@ -95,7 +95,7 @@ const stories = [
     language: "Igbo",
     audio: "/audio/talking_drum.mp3",
     text: "A young boy discovered a drum that could talk. It led him on an adventure he never expected...",
-    image: "/images/talking_drum.jpg",
+    image: "/images/drum.jpg",
     choices: [
       { text: "Follow the drum's voice", next: 16 },
       { text: "Ignore the drum", next: 17 },
