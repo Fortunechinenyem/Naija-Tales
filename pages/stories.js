@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Footer from "@/app/components/Footer";
 
 const stories = [
   {
@@ -62,7 +63,7 @@ export default function Stories() {
     <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
       <div className="mb-7">
         <Link
-          href="/stories"
+          href="/"
           className="bg-white text-purple-600 font-bold px-4 py-2 rounded-md shadow-md hover:bg-purple-100 transition w-full sm:w-auto text-center"
         >
           Back
@@ -118,16 +119,9 @@ export default function Stories() {
         ))}
       </div>
 
-      <footer className="mt-12 text-center">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="text-white text-lg font-medium mb-4"
-        >
-          Made with ❤️ for Nigerian children
-        </motion.p>
-      </footer>
+      <section className="mt-12 text-center">
+        <Footer />
+      </section>
     </div>
   );
 }

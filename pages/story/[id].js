@@ -15,11 +15,9 @@ const StoryPage = () => {
 
   useEffect(() => {
     if (id) {
-      // Get all stories with the same ID but different languages
       const storyVariants = stories.filter((s) => s.id === parseInt(id));
       setAvailableLanguages(storyVariants.map((s) => s.language));
 
-      // Find the correct story in the selected language (default to English if lang is missing)
       const fetchedStory = storyVariants.find(
         (s) => s.language === (lang || "English")
       );

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import QuizGame from "@/app/components/QuizGame";
 import naijaTalesQuestions from "@/app/components/NaijaTalesQuestions";
+import Footer from "@/app/components/Footer";
 
 const stories = [
   {
@@ -77,6 +78,7 @@ const testimonials = [
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [language, setLanguage] = useState("English");
+  const [showReviewForm, setShowReviewForm] = useState(false);
 
   const toggleMusic = () => {
     const audio = document.querySelector("audio");
@@ -258,37 +260,117 @@ export default function Home() {
           ))}
         </div>
       </div>
-
-      <footer className="mt-12 text-center">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          className="text-white text-lg font-medium mb-4"
+      <div className="text-center mb-6">
+        <button
+          onClick={() => setShowReviewForm(!showReviewForm)}
+          className="mt-4 px-5 py-3 text-base md:text-lg bg-purple-600 text-white rounded-lg cursor-pointer transition-transform hover:scale-105 active:scale-95 shadow-md"
         >
-          Made with ❤️ for Nigerian children
-        </motion.p>
-        <div className="flex justify-center space-x-4">
-          <Link
-            href="#"
-            className="text-white hover:text-orange-300 transition-colors"
-          >
-            Facebook
-          </Link>
-          <Link
-            href="#"
-            className="text-white hover:text-orange-300 transition-colors"
-          >
-            Twitter
-          </Link>
-          <Link
-            href="#"
-            className="text-white hover:text-orange-300 transition-colors"
-          >
-            Instagram
-          </Link>
-        </div>
-      </footer>
+          {showReviewForm ? "Close Review Form" : "Leave a Review"}
+        </button>
+      </div>
+
+      {showReviewForm && (
+        <motion.div
+          className="mt-6 w-full max-w-sm md:max-w-md mx-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+        >
+          <ReviewForm />
+        </motion.div>
+      )}
+
+      <section className="mt-12 text-center">
+        <Footer />
+      </section>
     </div>
+  );
+}
+
+function ReviewForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [review, setReview] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/send-review", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message: review }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage(
+          "Thank you for your review, really appreciate your feedback."
+        );
+        setName("");
+        setEmail("");
+        setReview("");
+      } else {
+        setMessage(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setMessage("An error occurred. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center gap-4 bg-white/20 backdrop-blur-md p-6 md:p-8 rounded-2xl shadow-lg max-w-lg mx-auto w-full"
+    >
+      <input
+        type="text"
+        placeholder="Your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        required
+        className="w-full p-3 md:p-4 text-base md:text-lg border-none rounded-lg bg-white/80 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+      />
+
+      <input
+        type="email"
+        placeholder="Your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+        className="w-full p-3 md:p-4 text-base md:text-lg border-none rounded-lg bg-white/80 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+      />
+
+      <textarea
+        placeholder="Write your review..."
+        value={review}
+        onChange={(e) => setReview(e.target.value)}
+        required
+        className="w-full p-3 md:p-4 text-base md:text-lg border-none rounded-lg bg-white/80 text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-pink-500"
+        rows={4}
+      />
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full p-3 md:p-4 text-base md:text-lg bg-purple-600 text-white rounded-lg cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? "Submitting..." : "Submit Review"}
+      </button>
+
+      {message && (
+        <p className="mt-4 text-base md:text-lg text-gray-700 font-semibold text-center">
+          {message}
+        </p>
+      )}
+    </form>
   );
 }
