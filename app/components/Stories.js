@@ -1,0 +1,148 @@
+const stories = [
+  {
+    id: 1,
+    title: "The Tortoise and the Birds",
+    language: "English",
+    audio: "/audio/tortoise.mp3",
+    text: "Once upon a time, the tortoise wanted to fly with the birds...",
+    image: "/images/tortoise.jpg",
+    choices: [
+      { text: "Fly with the birds", next: 2 },
+      { text: "Stay on the ground", next: 3 },
+    ],
+  },
+  {
+    id: 1,
+    title: "Tortoise and the Birds",
+    language: "Yoruba",
+    audio: "/audio/tortoise_yo.mp3",
+    text: "Lẹ́yìn ọjọ kan, ijapa fẹ́ fo pẹ̀lú àwọn ẹyẹ...",
+    image: "/images/tortoise.jpg",
+    choices: [
+      { text: "Fo pẹ̀lú àwọn ẹyẹ", next: 2 },
+      { text: "Duro lórí ilẹ̀", next: 3 },
+    ],
+  },
+  {
+    id: 2,
+    title: "Anansi the Spider",
+    language: "English",
+    audio: "/audio/anansi.mp3",
+    text: "Anansi the spider was known for his cunning and trickery...",
+    image: "/images/anansi.jpg",
+    choices: [
+      { text: "Trick the villagers", next: 4 },
+      { text: "Help the villagers", next: 5 },
+    ],
+  },
+  {
+    id: 2,
+    title: "Anansi the Spider",
+    language: "Pidgin",
+    audio: "/audio/anansi_pg.mp3",
+    text: "Anansi na spider wey sabi do wayo well well...",
+    image: "/images/anansi.jpg",
+    choices: [
+      { text: "Do wayo for the people", next: 4 },
+      { text: "Help dem", next: 5 },
+    ],
+  },
+  {
+    id: 3,
+    title: "The Lion and the Mouse",
+    language: "English",
+    audio: "/audio/lion.mp3",
+    text: "A tiny mouse once saved a mighty lion from a hunter’s trap...",
+    image: "/images/lion.jpg",
+    choices: [
+      { text: "Help the lion", next: 6 },
+      { text: "Ignore the lion", next: 7 },
+    ],
+  },
+  {
+    id: 3,
+    title: "The Lion and the Mouse",
+    language: "Hausa",
+    audio: "/audio/lion_ha.mp3",
+    text: "Wani karamin bera ya ceci babban zaki daga tarko...",
+    image: "/images/lion.jpg",
+    choices: [
+      { text: "Taimaka wa zaki", next: 6 },
+      { text: "Yi watsi da zaki", next: 7 },
+    ],
+  },
+  {
+    id: 4,
+    title: "The King’s Drum",
+    language: "English",
+    audio: "/audio/drum.mp3",
+    text: "The king’s drum was a magical instrument that could summon rain...",
+    image: "/images/drum.jpg",
+    choices: [
+      { text: "Search for the drum", next: 8 },
+      { text: "Ask the gods for help", next: 9 },
+    ],
+  },
+  {
+    id: 4,
+    title: "Ududo Na Ekwu",
+    language: "Igbo",
+    audio: "/audio/drum_ig.mp3",
+    text: "Ndị mmadụ n’abụghị ịhụ̀ drum eze, na-achọ̀ ya...",
+    image: "/images/drum.jpg",
+    choices: [
+      { text: "Chọọ drum ahụ", next: 8 },
+      { text: "Jụọ chi maka enyemaka", next: 9 },
+    ],
+  },
+  {
+    id: 5,
+    title: "The Magic Calabash",
+    language: "English",
+    audio: "/audio/calabash.mp3",
+    text: "A young girl found a magic calabash that could produce endless food...",
+    image: "/images/calabash.jpg",
+    choices: [
+      { text: "Share the food", next: 10 },
+      { text: "Keep it a secret", next: 11 },
+    ],
+  },
+  {
+    id: 5,
+    title: "Taba Buta Mai Sihiri",
+    language: "Hausa",
+    audio: "/audio/calabash_ha.mp3",
+    text: "Wata yarinya ta gano taba buta da ke samar da abinci ba ƙarewa...",
+    image: "/images/calabash.jpg",
+    choices: [
+      { text: "Raba abinci", next: 10 },
+      { text: "Rike sirri", next: 11 },
+    ],
+  },
+  {
+    id: 6,
+    title: "The Brave Hunter",
+    language: "English",
+    audio: "/audio/hunter.mp3",
+    text: "A brave hunter once saved his village from a ferocious lion...",
+    image: "/images/hunter.jpg",
+    choices: [
+      { text: "Fight the lion", next: 12 },
+      { text: "Befriend the lion", next: 13 },
+    ],
+  },
+  {
+    id: 6,
+    title: "Olú ọdẹ tó gbóná",
+    language: "Yoruba",
+    audio: "/audio/hunter_yo.mp3",
+    text: "Olú ọdẹ kan gbà ìlú rẹ̀ là kúrò lọ́wọ́ ọdẹ...",
+    image: "/images/calabash.jpg",
+    choices: [
+      { text: "Raba abinci", next: 10 },
+      { text: "Rike sirri", next: 11 },
+    ],
+  },
+];
+
+export default stories;
