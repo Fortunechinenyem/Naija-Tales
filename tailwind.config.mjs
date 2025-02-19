@@ -8,8 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: "#FFD700",
+        secondary: "#008751",
+        accent: "#E03C31",
+        background: "#F5F5DC",
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        lora: ["Lora", "serif"],
+        noto: ["Noto Sans", "sans-serif"],
       },
     },
   },
