@@ -1,11 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import QuizGame from "@/app/components/QuizGame";
 import naijaTalesQuestions from "@/app/components/NaijaTalesQuestions";
 import Footer from "@/app/components/Footer";
 
+const funFacts = [
+  "Did you know? The tortoise is one of the most famous trickster characters in African folklore!",
+  "Anansi the Spider originates from Ghana but is widely known across West Africa!",
+  "Drums play a significant role in Nigerian storytelling, signaling events in folktales!",
+  "Many Nigerian folktales teach morals and values through animal characters!",
+];
 const stories = [
   {
     id: 1,
@@ -57,6 +63,26 @@ const stories = [
   },
 ];
 
+const characters = [
+  {
+    name: "Anansi the Spider",
+    image: "/images/anansi.jpg",
+    description:
+      "A cunning trickster who uses intelligence to outwit stronger foes.",
+  },
+  {
+    name: "Tortoise (Ijapa)",
+    image: "/images/tortoise.jpg",
+    description:
+      "A famous character known for his wisdom and occasional mischief.",
+  },
+  {
+    name: "The Talking Drum",
+    image: "/images/drum2.jpg",
+    description:
+      "A magical drum that speaks and plays an important role in folklore.",
+  },
+];
 const testimonials = [
   {
     id: 1,
@@ -74,12 +100,11 @@ const testimonials = [
     quote: "A great way to teach children our languages and traditions.",
   },
 ];
-
 export default function Home() {
   const [isPlaying, setIsPlaying] = useState(true);
   const [language, setLanguage] = useState("English");
   const [showReviewForm, setShowReviewForm] = useState(false);
-
+  const [factIndex, setFactIndex] = useState(0);
   const toggleMusic = () => {
     const audio = document.querySelector("audio");
     if (isPlaying) {
@@ -89,6 +114,14 @@ export default function Home() {
     }
     setIsPlaying(!isPlaying);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setFactIndex((prevIndex) => (prevIndex + 1) % funFacts.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
       <audio autoPlay loop>
@@ -100,7 +133,7 @@ export default function Home() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4"
+          className="text-5xl font-extrabold text-white drop-shadow-lg mb-4"
         >
           Naija Tales
         </motion.h1>
@@ -108,7 +141,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl md:text-2xl text-white drop-shadow-md mb-8"
+          className="text-xl text-white drop-shadow-md mb-8"
         >
           Discover magical stories from Nigeria!
         </motion.p>
@@ -124,21 +157,18 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
-
       <div className="flex justify-center mb-12">
-        <div className="bg-white p-3 rounded-full shadow-xl">
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="bg-transparent text-gray-800 font-semibold outline-none"
-          >
-            <option value="English">🇬🇧 English</option>
-            <option value="Pidgin">🇳🇬 Pidgin</option>
-            <option value="Yoruba">🇳🇬 Yoruba</option>
-            <option value="Igbo">🇳🇬 Igbo</option>
-            <option value="Hausa">🇳🇬 Hausa</option>
-          </select>
-        </div>
+        <select
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+          className="bg-white text-gray-800 font-semibold p-3 rounded-full shadow-xl"
+        >
+          <option value="English">🇬🇧 English</option>
+          <option value="Pidgin">🇳🇬 Pidgin</option>
+          <option value="Yoruba">🇳🇬 Yoruba</option>
+          <option value="Igbo">🇳🇬 Igbo</option>
+          <option value="Hausa">🇳🇬 Hausa</option>
+        </select>
       </div>
       <div className="text-center mb-7">
         <button
@@ -147,6 +177,46 @@ export default function Home() {
         >
           {isPlaying ? "Pause Music" : "Play Music"}
         </button>
+      </div>
+      <div className="bg-white rounded-2xl shadow-xl p-8 mb-16 flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2">
+          <h2 className="text-3xl font-bold text-purple-600 mb-6">
+            About Naija Tales
+          </h2>
+          <p className="text-gray-700 text-lg">
+            Naija Tales brings Nigerian folktales, myths, and legends to life
+            through interactive stories, animations, and games!
+          </p>
+        </div>
+        <div className="md:w-1/2 mt-8 md:mt-0">
+          <Image
+            src="/images/folklore.jpg"
+            alt="Naija Tales Mascot"
+            width={400}
+            height={400}
+            className="rounded-2xl"
+          />
+        </div>
+      </div>
+      <div className="bg-white rounded-2xl shadow-xl p-8 mb-16 flex flex-col md:flex-row items-center gap-8">
+        <div className="md:w-1/2 flex justify-center">
+          <Image
+            src="/images/drum2.jpg"
+            alt="Naija Tales Quiz"
+            width={400}
+            height={400}
+            className="rounded-2xl shadow-lg"
+          />
+        </div>
+        <div className="md:w-1/2 text-center md:text-left">
+          <h2 className="text-3xl font-bold text-purple-600 mb-4">
+            Quiz Game!
+          </h2>
+          <p className="text-gray-700 text-lg mb-4">
+            Test your knowledge of Nigerian folklore with our fun quiz!
+          </p>
+          <QuizGame questions={naijaTalesQuestions} />
+        </div>
       </div>
 
       <div className="mb-16">
@@ -184,58 +254,57 @@ export default function Home() {
           ))}
         </div>
       </div>
-
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-        <div className="flex flex-col md:flex-row items-center">
-          <div className="md:w-1/2">
-            <h2 className="text-3xl md:text-4xl font-bold text-purple-600 mb-6">
-              About Naija Tales
-            </h2>
-            <p className="text-gray-700 text-lg">
-              Naija Tales is a fun and educational app that brings Nigerian
-              folktales, myths, and legends to life. With interactive stories,
-              animations, and games, children can learn about their culture
-              while having fun!
-            </p>
-          </div>
-          <div className="md:w-1/2 mt-8 md:mt-0">
-            <Image
-              src="/images/folklore.jpg"
-              alt="Naija Tales Mascot"
-              width={400}
-              height={400}
-              className="rounded-2xl"
-            />
-          </div>
+        <h2 className="text-3xl font-bold text-purple-600 text-center mb-6">
+          Live Storytelling
+        </h2>
+        <div className="flex justify-center">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            title="Live Storytelling"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            className="rounded-2xl shadow-lg"
+          ></iframe>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          <div className="md:w-1/2 flex justify-center">
-            <Image
-              src="/images/drum2.jpg"
-              alt="Naija Tales Quiz"
-              width={400}
-              height={400}
-              className="rounded-2xl shadow-lg"
-            />
-          </div>
 
-          <div className="md:w-1/2 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl font-bold text-purple-600 mb-4">
-              Quiz Game!
-            </h2>
-            <p className="text-gray-700 text-lg mb-4">
-              Naija Tales is a fun and educational app that brings Nigerian
-              folktales, myths, and legends to life. With interactive stories,
-              animations, and games, children can learn about their culture
-              while having fun!
-            </p>
+      <div className="bg-white p-6 rounded-2xl shadow-lg text-center mb-12">
+        <h2 className="text-2xl font-bold text-purple-600 mb-4">
+          Did You Know?
+        </h2>
+        <p className="text-lg text-gray-700">{funFacts[factIndex]}</p>
+      </div>
 
-            <div className="mt-6">
-              <QuizGame questions={naijaTalesQuestions} />
-            </div>
-          </div>
+      <div className="mb-16">
+        <h2 className="text-3xl font-bold text-white text-center mb-8">
+          Character Spotlight
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {characters.map((char, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-2xl shadow-xl p-6 text-center"
+            >
+              <Image
+                src={char.image}
+                alt={char.name}
+                width={200}
+                height={200}
+                className="mx-auto rounded-full"
+              />
+              <h3 className="text-xl font-bold text-gray-800 mt-4">
+                {char.name}
+              </h3>
+              <p className="text-gray-600 mt-2">{char.description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
 
@@ -279,10 +348,7 @@ export default function Home() {
           <ReviewForm />
         </motion.div>
       )}
-
-      <section className="mt-12 text-center">
-        <Footer />
-      </section>
+      <Footer />
     </div>
   );
 }

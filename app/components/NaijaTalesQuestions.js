@@ -89,6 +89,96 @@ const naijaTalesQuestions = [
       { text: "Queen Nwanyeruwa", isCorrect: true },
     ],
   },
+  {
+    text: "What is the name of the Yoruba god of creation?",
+    answers: [
+      { text: "Obatala", isCorrect: true },
+      { text: "Sango", isCorrect: false },
+      { text: "Oya", isCorrect: false },
+      { text: "Esu", isCorrect: false },
+    ],
+  },
+  {
+    text: "In Hausa folklore, what is the name of the trickster hare?",
+    answers: [
+      { text: "Gizo", isCorrect: true },
+      { text: "Zomo", isCorrect: false },
+      { text: "Koki", isCorrect: false },
+      { text: "Dodo", isCorrect: false },
+    ],
+  },
+  {
+    text: "What is the name of the Igbo goddess of the earth?",
+    answers: [
+      { text: "Ala", isCorrect: true },
+      { text: "Ani", isCorrect: false },
+      { text: "Amadioha", isCorrect: false },
+      { text: "Ogbunabali", isCorrect: false },
+    ],
+  },
+  {
+    text: "Which Nigerian folktale explains why the bat flies at night?",
+    answers: [
+      { text: "The Bat and the Sun", isCorrect: true },
+      { text: "The Tortoise and the Birds", isCorrect: false },
+      { text: "The Lion and the Mouse", isCorrect: false },
+      { text: "The Spider and the Fly", isCorrect: false },
+    ],
+  },
+  {
+    text: "What is the name of the Yoruba god of divination and wisdom?",
+    answers: [
+      { text: "Ifa", isCorrect: true },
+      { text: "Ogun", isCorrect: false },
+      { text: "Esu", isCorrect: false },
+      { text: "Oshun", isCorrect: false },
+    ],
+  },
+  {
+    text: "In Igbo folklore, what is the name of the spirit of death?",
+    answers: [
+      { text: "Ogbunabali", isCorrect: true },
+      { text: "Amadioha", isCorrect: false },
+      { text: "Ala", isCorrect: false },
+      { text: "Agwu", isCorrect: false },
+    ],
+  },
+  {
+    text: "Which Nigerian folktale teaches the importance of sharing?",
+    answers: [
+      { text: "The Magic Calabash", isCorrect: true },
+      { text: "The Greedy Tortoise", isCorrect: false },
+      { text: "The Lion and the Mouse", isCorrect: false },
+      { text: "The Spider and the Fly", isCorrect: false },
+    ],
+  },
+  {
+    text: "What is the name of the Yoruba goddess of the wind and storms?",
+    answers: [
+      { text: "Oya", isCorrect: true },
+      { text: "Oshun", isCorrect: false },
+      { text: "Yemoja", isCorrect: false },
+      { text: "Esu", isCorrect: false },
+    ],
+  },
+  {
+    text: "In Hausa folklore, what is the name of the evil spirit?",
+    answers: [
+      { text: "Dodo", isCorrect: true },
+      { text: "Gizo", isCorrect: false },
+      { text: "Zomo", isCorrect: false },
+      { text: "Koki", isCorrect: false },
+    ],
+  },
+  {
+    text: "Which Nigerian folktale explains why the elephant has a long trunk?",
+    answers: [
+      { text: "The Elephant and the Tortoise", isCorrect: true },
+      { text: "The Lion and the Mouse", isCorrect: false },
+      { text: "The Spider and the Fly", isCorrect: false },
+      { text: "The Greedy Tortoise", isCorrect: false },
+    ],
+  },
 ];
 
 export default naijaTalesQuestions;

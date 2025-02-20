@@ -103,17 +103,38 @@ const stories = [
   },
 ];
 
+const languages = ["All", ...new Set(stories.map((story) => story.language))];
+
 export default function Stories() {
+  const [selectedLanguage, setSelectedLanguage] = useState("All");
+
+  const filteredStories =
+    selectedLanguage === "All"
+      ? stories
+      : stories.filter((story) => story.language === selectedLanguage);
+
   return (
     <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
-      <div className="mb-7">
+      <div className="mb-7 flex justify-between items-center">
         <Link
           href="/"
-          className="bg-white text-purple-600 font-bold px-4 py-2 rounded-md shadow-md hover:bg-purple-100 transition w-full sm:w-auto text-center"
+          className="bg-white text-purple-600 font-bold px-4 py-2 rounded-md shadow-md hover:bg-purple-100 transition"
         >
           Back
         </Link>
+        <select
+          className="px-4 py-2 rounded-md bg-white text-gray-700 shadow-md cursor-pointer"
+          value={selectedLanguage}
+          onChange={(e) => setSelectedLanguage(e.target.value)}
+        >
+          {languages.map((lang) => (
+            <option key={lang} value={lang}>
+              {lang}
+            </option>
+          ))}
+        </select>
       </div>
+
       <div className="text-center mb-12">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
@@ -134,7 +155,7 @@ export default function Stories() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {stories.map((story) => (
+        {filteredStories.map((story) => (
           <Link key={story.id} href={`/story/${story.id}`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
