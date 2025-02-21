@@ -101,6 +101,32 @@ const stories = [
     language: "Yoruba",
     image: "/images/sunmoon.jpg",
   },
+  {
+    id: 17,
+
+    title: "The Elephant and the Tortoise",
+    language: "Yoruba",
+
+    image: "/images/elephant.jpg",
+  },
+  {
+    id: 18,
+    title: "The Magic Pot",
+    language: "Yoruba",
+    image: "/images/pot.jpg",
+  },
+  {
+    id: 19,
+    title: "The Wise Crab",
+    language: "Yoruba",
+    image: "/images/crab.jpg",
+  },
+  {
+    id: 20,
+    title: "The Singing Stone",
+    language: "Yoruba",
+    image: "/images/stone.jpg",
+  },
 ];
 
 const languages = ["All", ...new Set(stories.map((story) => story.language))];
