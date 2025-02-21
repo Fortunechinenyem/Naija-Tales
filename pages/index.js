@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import QuizGame from "@/app/components/QuizGame";
 import naijaTalesQuestions from "@/app/components/NaijaTalesQuestions";
 import Footer from "@/app/components/Footer";
+import ColoringCanvas from "@/app/components/ColoringCanvas";
 
 const funFacts = [
   "Did you know? The tortoise is one of the most famous trickster characters in African folklore!",
@@ -123,7 +124,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-b from-purple-600 to-teal-500 min-h-screen p-8">
+    <div className="bg-gradient-to-b from-purple-500 to-teal-400 min-h-screen p-8">
       <audio autoPlay loop>
         <source src="/audio/folklore.mp3" type="audio/mpeg" />
         Your browser does not support the audio element.
@@ -254,6 +255,9 @@ export default function Home() {
           ))}
         </div>
       </div>
+      <section>
+        <ColoringCanvas />
+      </section>
       <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
         <h2 className="text-3xl font-bold text-purple-600 text-center mb-6">
           Live Storytelling
