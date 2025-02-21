@@ -1,9 +1,20 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function ColoringCanvas() {
   const canvasRef = useRef(null);
   const [color, setColor] = useState("#000000");
   const [isDrawing, setIsDrawing] = useState(false);
+  const [canvasSize, setCanvasSize] = useState({ width: 400, height: 400 });
+
+  useEffect(() => {
+    const updateCanvasSize = () => {
+      const size = Math.min(window.innerWidth * 0.9, 400);
+      setCanvasSize({ width: size, height: size });
+    };
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+    return () => window.removeEventListener("resize", updateCanvasSize);
+  }, []);
 
   const getCoordinates = (event) => {
     const canvas = canvasRef.current;
@@ -17,7 +28,6 @@ export default function ColoringCanvas() {
       x = event.clientX - rect.left;
       y = event.clientY - rect.top;
     }
-
     return { x, y };
   };
 
@@ -57,15 +67,15 @@ export default function ColoringCanvas() {
   };
 
   return (
-    <div className=" mb-7 flex flex-col items-center">
+    <div className="mb-7 flex flex-col items-center">
       <h2 className="text-3xl font-bold text-white mb-4">
         Draw Your Character
       </h2>
       <canvas
         ref={canvasRef}
-        width={400}
-        height={400}
-        className="border-2 border-gray-400 bg-white touch-none"
+        width={canvasSize.width}
+        height={canvasSize.height}
+        className="border-2 border-gray-400 bg-white touch-none w-full max-w-[400px] h-auto"
         onMouseDown={startDrawing}
         onMouseMove={draw}
         onMouseUp={stopDrawing}
