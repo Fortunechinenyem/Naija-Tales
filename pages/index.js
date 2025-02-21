@@ -258,21 +258,21 @@ export default function Home() {
       <section>
         <ColoringCanvas />
       </section>
-      <div className="bg-white rounded-2xl shadow-xl p-8 mb-16">
-        <h2 className="text-3xl font-bold text-purple-600 text-center mb-6">
+      <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8 mb-16">
+        <h2 className="text-2xl md:text-3xl font-bold text-purple-600 text-center mb-6">
           Live Storytelling
         </h2>
         <div className="flex justify-center">
-          <iframe
-            width="560"
-            height="315"
-            src="https://www.youtube.com/embed/80ktnPKSCI4"
-            title="Live Storytelling"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="rounded-2xl shadow-lg"
-          ></iframe>
+          <div className="w-full max-w-4xl aspect-video">
+            <iframe
+              src="https://www.youtube.com/embed/80ktnPKSCI4"
+              title="Live Storytelling"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full rounded-2xl shadow-lg"
+            ></iframe>
+          </div>
         </div>
       </div>
 
