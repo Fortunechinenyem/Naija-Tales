@@ -127,6 +127,78 @@ const stories = [
     language: "Yoruba",
     image: "/images/stone.jpg",
   },
+  {
+    id: 21,
+    title: "The Enchanted Fish",
+    language: "Hausa",
+    image: "/images/fish.jpg",
+  },
+  {
+    id: 22,
+    title: "The Gaint's Secret",
+    language: "Yoruba",
+    image: "/images/giant.jpg",
+  },
+  {
+    id: 23,
+    title: "The Moonlit Dance",
+    language: "igbo",
+    image: "/images/dance.jpg",
+  },
+  {
+    id: 24,
+    title: "The Talking Drum",
+    language: "Yoruba",
+    image: "/images/drum.jpg",
+  },
+  {
+    id: 25,
+    title: "The Clever Tortoise",
+    language: "igbo",
+    image: "/images/tortoise.jpg",
+  },
+  {
+    id: 26,
+    title: "The King’s Lost Crown",
+    language: "Yoruba",
+    image: "/images/crown.jpg",
+  },
+  {
+    id: 27,
+    title: "The River's Spirit's Gift",
+    language: "Yoruba",
+    image: "/images/river.jpg",
+  },
+  {
+    id: 28,
+    title: "The Enchanted Flute",
+    language: "Igbo",
+    image: "/images/flute.jpg",
+  },
+  {
+    id: 29,
+    title: "The Firefly’s Secret",
+    language: "Yoruba",
+    image: "/images/firefly.jpg",
+  },
+  {
+    id: 30,
+    title: "The Kind Leaopard",
+    language: "Igbo",
+    image: "/images/leopard.jpg",
+  },
+  {
+    id: 31,
+    title: "The Farmer and the Talking Yam",
+    language: "Yoruba",
+    image: "/images/yam.jpg",
+  },
+  {
+    id: 32,
+    title: "The Fisherman’s Fortune",
+    language: "Yoruba",
+    image: "/images/fisherman.jpg",
+  },
 ];
 
 const languages = ["All", ...new Set(stories.map((story) => story.language))];
