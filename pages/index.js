@@ -158,7 +158,7 @@ export default function Home() {
           </Link>
         </motion.div>
       </div>
-      <div className="flex justify-center mb-12">
+      {/* <div className="flex justify-center mb-12">
         <select
           value={language}
           onChange={(e) => setLanguage(e.target.value)}
@@ -170,11 +170,11 @@ export default function Home() {
           <option value="Igbo">🇳🇬 Igbo</option>
           <option value="Hausa">🇳🇬 Hausa</option>
         </select>
-      </div>
+      </div> */}
       <div className="text-center mb-7">
         <button
           onClick={toggleMusic}
-          className="mt-6 p-3 text-lg bg-pink-600 text-white rounded-lg cursor-pointer transition-transform hover:scale-105 active:scale-95 shadow-md"
+          className="mt-6 p-3 text-purple-600 bg-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-colors"
         >
           {isPlaying ? "Pause Music" : "Play Music"}
         </button>
@@ -266,7 +266,7 @@ export default function Home() {
           <iframe
             width="560"
             height="315"
-            src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+            src="https://www.youtube.com/embed/80ktnPKSCI4"
             title="Live Storytelling"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
