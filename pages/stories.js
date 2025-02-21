@@ -20,7 +20,7 @@ const stories = [
   {
     id: 3,
     title: "The Lion and the Mouse",
-    language: "Yoruba",
+    language: "Hausa",
     image: "/images/lion.jpg",
   },
   {
