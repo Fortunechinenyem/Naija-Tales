@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="text-black  ">
+    <footer className="text-black mt-9  ">
       <div className="">
         {" "}
         <Link href="/" className="mb-7">
@@ -18,8 +18,8 @@ export default function Footer() {
           className=" text-lg font-medium mb-4"
         >
           &copy; {new Date().getFullYear()} Naija-Tales. All rights reserved.
-          Created by Fortune (Iya in Tech) for Nigerian children
-          <a href="tel:+2348067585444" className="ml-2">
+          Created by Fortune (Iya in Tech)
+          <a href="tel:+2348067585444" className="mx-auto">
             📞 Call me
           </a>
         </motion.p>
