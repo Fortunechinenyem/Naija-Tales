@@ -3,6 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import Footer from "@/app/components/Footer";
+import { TypeAnimation } from "react-type-animation";
 
 const stories = [
   {
@@ -183,7 +184,7 @@ const stories = [
   },
   {
     id: 30,
-    title: "The Kind Leaopard",
+    title: "The Kind Leopard",
     language: "Igbo",
     image: "/images/leopard.jpg",
   },
@@ -233,22 +234,28 @@ export default function Stories() {
         </select>
       </div>
 
-      <div className="text-center mb-12">
+      <div className="text-center mb-12 px-4">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl md:text-6xl font-extrabold text-white drop-shadow-lg mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-4"
         >
-          Explore Stories
+          <TypeAnimation
+            sequence={["Naija Tales", 2000, "Explore Stories", 2000]}
+            wrapper="span"
+            speed={50}
+            repeat={Infinity}
+          />
         </motion.h1>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl md:text-2xl text-white drop-shadow-md mb-8"
+          className="text-lg sm:text-xl md:text-2xl text-white drop-shadow-md mb-8 max-w-2xl mx-auto"
         >
-          Enjoy timeless Nigerian folktales in different languages!
+          Folklores with Fun!
         </motion.p>
       </div>
 

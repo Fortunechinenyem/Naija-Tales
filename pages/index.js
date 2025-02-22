@@ -6,6 +6,7 @@ import QuizGame from "@/app/components/QuizGame";
 import naijaTalesQuestions from "@/app/components/NaijaTalesQuestions";
 import Footer from "@/app/components/Footer";
 import ColoringCanvas from "@/app/components/ColoringCanvas";
+import { TypeAnimation } from "react-type-animation";
 
 const funFacts = [
   "Did you know? The tortoise is one of the most famous trickster characters in African folklore!",
@@ -134,43 +135,40 @@ export default function Home() {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-extrabold text-white drop-shadow-lg mb-4"
+          className="text-5xl md:text-6xl font-extrabold text-white  mb-4"
         >
-          Naija Tales
+          <TypeAnimation
+            sequence={["Naija Tales", 2000, "Stories from Nigeria", 2000]}
+            wrapper="span"
+            speed={50}
+            repeat={Infinity}
+          />
         </motion.h1>
+
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-xl text-white drop-shadow-md mb-8"
+          className="text-xl md:text-2xl text-white drop-shadow-md mb-8"
         >
           Discover magical stories from Nigeria!
         </motion.p>
+
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="relative z-10"
         >
           <Link href="/stories">
-            <button className="bg-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-colors">
+            <button className="bg-orange-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-orange-600 transition-colors transform hover:scale-105 active:scale-95">
               Explore Stories
             </button>
           </Link>
         </motion.div>
       </div>
-      {/* <div className="flex justify-center mb-12">
-        <select
-          value={language}
-          onChange={(e) => setLanguage(e.target.value)}
-          className="bg-white text-gray-800 font-semibold p-3 rounded-full shadow-xl"
-        >
-          <option value="English">🇬🇧 English</option>
-          <option value="Pidgin">🇳🇬 Pidgin</option>
-          <option value="Yoruba">🇳🇬 Yoruba</option>
-          <option value="Igbo">🇳🇬 Igbo</option>
-          <option value="Hausa">🇳🇬 Hausa</option>
-        </select>
-      </div> */}
       <div className="text-center mb-7">
         <button
           onClick={toggleMusic}
